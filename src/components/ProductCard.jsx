@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function ProductCard({ product }) {
   return (
     <div className="bg-white dark:bg-black rounded-lg overflow-hidden shadow-sm transition-transform transform hover:scale-105">
-      <Link to={`/product-details/${product._id}`}>
+      <Link to={`/product-details/${product._id}`} replace>
       <img
         className="w-full h-48 object-cover"
         src={product.images[0]}

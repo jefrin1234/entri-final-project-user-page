@@ -35,7 +35,7 @@ import { setCart } from '../slices/cartSlice';
       });
 
       const cartDetails = response.data.data; // Assuming the data comes like this
-      console.log(cartDetails)
+      // console.log(cartDetails)
       // Dispatch to update Redux state
       dispatch(setCart({
         items: cartDetails.items,

@@ -16,13 +16,20 @@ function RecommededProducts({brand,name}) {
         params: { brand:brand,name:name },
       });
       setProducts(response.data.data);
-      console.log(response)
+      // console.log(response)
     } catch (error) {
      console.log(error)
     } finally {
       setLoading(false);
     }
   };
+
+  const scrollTop = ()=>{
+    window.scrollTo({top:0,behavior:'smooth'}) 
+  }
+  
+
+
 
   useEffect(() => {
    
@@ -40,9 +47,9 @@ function RecommededProducts({brand,name}) {
             <h2 className="text-xl font-semibold">No products available</h2>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 md:gap-16 gap-6">
+          <div onClick={scrollTop} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 md:gap-16 gap-6">
             {products.map((product) => (
-              <ProductCard key={product._id} product={product} />
+              <ProductCard  key={product._id} product={product} />
             ))}
           </div>
         )}

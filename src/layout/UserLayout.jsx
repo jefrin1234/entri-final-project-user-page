@@ -21,16 +21,15 @@ function UserLayout() {
   const checkUser = async()=>{
   
    try {
-    console.log("soon there")
+   
     const response = await axiosInstance({
       method:'POST',
       url:'/user/check-user'
     })
     setLoading(false)
-    console.log(response)
-    console.log("iam herer")
+ 
     dispatch(setUserDetails({loggedIn:true,user:response.data.data}))
-    console.log("iam not here")
+  
     dispatch(fetchCartDetails())
    
   //  dispatch(setCart({

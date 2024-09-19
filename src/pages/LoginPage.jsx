@@ -25,7 +25,7 @@ function LoginPage() {
       })
       const responseData = response.data
       const userData =  responseData.data
-      console.log(userData)
+      // console.log(userData)
  
     
      

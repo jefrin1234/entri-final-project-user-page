@@ -10,6 +10,8 @@ import SearchPage from "../pages/SearchPage";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/signupPage";
 import Cart from "../pages/CartPage";
+import Checkout from "../pages/CheckoutPage";
+
 
 
 
@@ -30,7 +32,11 @@ export const router = createBrowserRouter([
         element:<LoginPage/>
       },
       {
-        path:'category-products',
+        path:'signup',
+        element:<SignupPage/>
+      },
+      {
+        path:'category-products/',
         element:<CategoryProducts/>
       },
       {
@@ -38,16 +44,17 @@ export const router = createBrowserRouter([
         element:<ProductDetails/>
       },
       {
-        path:'/search',
+        path:'search',
         element:<SearchPage/>
       },
-      {
-        path:'signup',
-        element:<SignupPage/>
-      },
+      
       {
         path:'/cart',
         element:<Cart/>
+      },
+      {
+        path:'checkout',
+        element:<Checkout/>
       }
     ]
   },

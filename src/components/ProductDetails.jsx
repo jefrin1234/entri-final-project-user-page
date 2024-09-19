@@ -77,7 +77,7 @@ function ProductDetails() {
 
         const response = await axiosInstance({
            method:'POST',
-           url:'/cart/addtocart',
+           url:'/cart/addtocart',                                                   
            data:  data             
         })           
         console.log(response)
@@ -100,7 +100,7 @@ function ProductDetails() {
       fetchProductDetails();
     }
 
-  },[]);
+  },[productId]);
 
 
 

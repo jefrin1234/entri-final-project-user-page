@@ -60,6 +60,12 @@ function CategoryProducts() {
     setShowFilterSection(false); // Close without any filter selection
   };
 
+  const scrollTop = ()=>{
+    window.scrollTo({top:0,behavior:'smooth'}) 
+  }
+  
+  
+
   return (
     <div className="container mx-auto py-10 flex flex-col md:flex-row h-screen">
       {/* Button to toggle filter and sort section on small screens */}
@@ -91,7 +97,7 @@ function CategoryProducts() {
           <h4 className="font-semibold text-lg mb-2">Brands</h4>
           {filters.brands.map((brand) => (
             <label key={brand} className="block mb-1">
-              <input
+              <input onClick={scrollTop}
                 type="radio"
                 name="brand"
                 onChange={() => handleFilterChange('brand', brand)}
@@ -108,7 +114,7 @@ function CategoryProducts() {
           <h4 className="font-semibold text-lg mb-2">Colours</h4>
           {filters.colours.map((colour) => (
             <label key={colour} className="block mb-1">
-              <input
+              <input onClick={scrollTop}
                 type="radio"
                 name="colour"
                 onChange={() => handleFilterChange('colour', colour)}
@@ -125,7 +131,7 @@ function CategoryProducts() {
           <h4 className="font-semibold text-lg mb-2">Types</h4>
           {filters.name.map((name) => (
             <label key={name} className="block mb-1">
-              <input
+              <input onClick={scrollTop}
                 type="radio"
                 name="name"
                 onChange={() => handleFilterChange('name', name)}
@@ -140,7 +146,7 @@ function CategoryProducts() {
         {/* Sorting options */}
         <div>
           <h4 className="font-semibold text-lg mb-2">Sort By</h4>
-          <select
+          <select onClick={scrollTop}
             onChange={(e) => setSortOption(e.target.value)}
             value={sortOption}
             className="w-full p-2 border rounded-md border-gray-300 dark:bg-black dark:text-white dark:border-white focus:outline-none focus:ring-2 focus:ring-blue-500"

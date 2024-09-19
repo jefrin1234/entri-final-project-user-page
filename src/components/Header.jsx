@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 function Header() {
  
   const items = useSelector(state=>state.cart.items)
-  console.log("items",items)
+  // console.log("items",items)
   
   const loggedIn = useSelector(state=>state.user.loggedIn)
  

@@ -27,9 +27,9 @@ function SignupPage() {
       })
       const responseData = response.data
       
-      console.log(responseData.success)
+      // console.log(responseData.success)
      
-      console.log(responseData)
+      // console.log(responseData)
     
      
       if(responseData.success){

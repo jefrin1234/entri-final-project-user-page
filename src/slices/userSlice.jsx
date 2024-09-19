@@ -12,8 +12,8 @@ export const userSlice = createSlice({
       
       state.user = action.payload.user
       state.loggedIn = action.payload.loggedIn
-      console.log(state.user)
-      console.log(state.loggedIn)
+      // console.log(state.user)
+      // console.log(state.loggedIn)
     
    }
   }
