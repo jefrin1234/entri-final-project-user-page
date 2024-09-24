@@ -62,7 +62,7 @@ function Header() {
               <Link to="about" className="hover:text-green-500 transition duration-300">About</Link>
             </li>
             <li>
-              <Link to="shop" className="hover:text-green-500 transition duration-300">Shop</Link>
+            
             </li>
           </ul>
         </nav>
@@ -85,7 +85,7 @@ function Header() {
       )}
     </div>
           <button>
-            <Link to="favourites"><Heart className="w-6 h-6 hover:text-green-500 transition duration-300" /></Link>
+            <Link to="/favourites"><Heart className="w-6 h-6 hover:text-green-500 transition duration-300" /></Link>
           </button>
          {
           loggedIn ? (
@@ -137,7 +137,7 @@ function Header() {
       <nav className="md:hidden flex justify-around mt-3 bg-white dark:bg-black text-black dark:text-white shadow-md z-50">
         <Link to="/" className="hover:text-green-500 transition duration-300">Home</Link>
         <Link to="about" className="hover:text-green-500 transition duration-300">About</Link>
-        <Link to="shop" className="hover:text-green-500 transition duration-300">Shop</Link>
+      
         <div className="relative">
       {/* Shopping Cart Button */}
       <button className="relative">
@@ -153,7 +153,7 @@ function Header() {
         </div>
       )}
     </div>
-        <Link to="favourites" className="hover:text-green-500 transition duration-300"><Heart className="w-6 h-6" /></Link>
+        <Link to="/favourites" className="hover:text-green-500 transition duration-300"><Heart className="w-6 h-6" /></Link>
         {
           loggedIn ? (
              <button>

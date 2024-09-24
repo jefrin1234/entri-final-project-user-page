@@ -1,24 +1,3 @@
-// import axiosInstance from "../config/axiosInstance"
-
-
-// const fetchCartDetails = async()=>{
-//   try {
-//     const response = await axiosInstance({
-//       method:'GET',
-//       url:'/cart/cart-details'
-//     })
-  
-
-//    return response
-
-//  } catch (error) {
-//     console.log(error)
-
-//   }
-// }
-
-// export default fetchCartDetails
-
 
 
 import axiosInstance from '../config/axiosInstance';

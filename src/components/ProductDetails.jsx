@@ -6,17 +6,22 @@ import Spinner from './LoadingComponent';
 import ProductRatings from './ProductRatings';
 import RecommededProducts from './RecommededProducts';
 import { useDispatch, useSelector } from 'react-redux';
+import fetchfavouriteDetails from '../services/fetchFavouriteDetails';
 import fetchCartDetails from '../services/fetchCartDetails';
+
+
 
 function ProductDetails() {
   const dispatch = useDispatch()
-  const loggedIn = useSelector(state=>state.user.loggedIn)
+  const loggedIn = useSelector(state => state.user.loggedIn)
   const { productId } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeImage, setActiveImage] = useState('');
   const [reviewModel, setReviewModel] = useState(false);
   const [zoomImage, setZoomImage] = useState(false);
+  const [comment, setComment] = useState('');
+  const [rating, setRating] = useState('');
 
   const [zoomImageCoordinate, setZoomImageCoordinate] = useState({
     x: 0,
@@ -39,7 +44,7 @@ function ProductDetails() {
 
   const selectActiveImage = (imageUrl) => {
     setActiveImage(imageUrl);
-  };                   
+  };
 
   const openReviewModel = () => {
     setReviewModel(!reviewModel);
@@ -62,37 +67,105 @@ function ProductDetails() {
     setZoomImage(false);
   };
 
-  const handleAddToCart =async (productId)=>{
-    if(!loggedIn){
-     toast.error("Please login")
-    }else{
-      try {
 
-        const data = {
-          productId:product._id,
-          price:product.sellingPrice,
-          quantity:1
-        }
-        console.log(data)
+  const handleAddToCart = async (product) => {
+    try {
+      const data = {
+        productId: product._id,
+        price: product.sellingPrice,
+        quantity: 1,
+      };
 
-        const response = await axiosInstance({
-           method:'POST',
-           url:'/cart/addtocart',                                                   
-           data:  data             
-        })           
-        console.log(response)
-        
-        if(response){
-          dispatch(fetchCartDetails())
-          toast.success("Item added to cart")
-        }
-       } catch (error) {
-        console.log(error)
-        toast.error("item already in the cart")
-       }
+      const response = await axiosInstance({
+        method: 'POST',
+        url: '/cart/addtocart',
+        data: data,
+      });
+
+      toast.success("Item added to cart");
+
+      if (response) {
+        dispatch(fetchCartDetails());
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("error adding to cart");
     }
+  };
+
+
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validate form inputs
+    if (!comment || !rating) {
+      toast.error("Please enter a comment and rating.");
+      return;
+    }
+
+    try {
+      const response = await axiosInstance.post(`/rating/add-rating`, {
+        productId,
+        rating,
+        comment,
+      });
+
+      if (response.data.success) {
+        toast.success("Rating added successfully");
+
+        // Optionally refresh the ratings or reset form fields
+        setComment('');
+        setRating('');
+      }
+    } catch (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        if (error.response.status === 403) {
+          console.log("Forbidden: " + error.response.data.message);
+          toast.error("you can only rate after purchasing this product");
+        } else {
+          // Handle other status codes
+          const message = error.response.data?.message || "An error occurred";
+          toast.error(message);
+        }
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.log("No response received:", error.request);
+        toast.error("No response from the server. Please try again.");
+      } else {
+        // Something happened in setting up the request that triggered an error
+        console.log("Error:", error.message);
+        toast.error("An unexpected error occurred.");
+      }
+    }
+  };
+
+
+ const  handleAddToFavourite = async(productId)=>{
   
+   try {
+    if(!loggedIn){
+      return toast.error("please login")
+    }
+    console.log(productId)
+    const response = await axiosInstance({
+      method:'POST',
+      url:'/favourites/add-favourite',
+      data:{
+        productId:productId
+      }
+    })
+    console.log(response)
+    toast.success("Product Added to favourites")
+    dispatch(fetchfavouriteDetails())
+  } catch (error) {
+    console.log(error)
+    toast.error("Product already in favourites")
   }
+
+ }
+
+
 
   useEffect(() => {
 
@@ -100,15 +173,15 @@ function ProductDetails() {
       fetchProductDetails();
     }
 
-  },[productId]);
+  }, [productId]);
 
 
 
- 
 
-if (loading) {
-  return <Spinner />;
-}
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="container mx-auto p-16 relative">
@@ -151,7 +224,7 @@ if (loading) {
                 <div
                   className="w-full h-full min-h-[400px] min-w-[500px] mix-blend-multiply scale-150"
                   style={{
-                    background: `url(${activeImage})`,
+                    background: `url(${activeImage || product.images[0]})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: `${zoomImageCoordinate.x * 100}% ${zoomImageCoordinate.y * 100}%`
                   }}
@@ -188,9 +261,11 @@ if (loading) {
           </div>
 
           <div className="flex items-center space-x-4">
-          
-            <span className="text-blue-500 dark:text-blue-500">{product.stock > 0 ? 'In stock' : 'Not available'}</span>
+            <span className={product.stock > 0 ? 'text-green-500' : 'text-red-500'}>
+              {product.stock > 0 ? 'In stock' : 'Not available'}
+            </span>
           </div>
+
 
           <div>
             <span className='font-bold'>Description:</span>
@@ -198,12 +273,12 @@ if (loading) {
           </div>
           <div className="flex gap-4">
             {/* Add to Cart Button */}
-            <button className="px-6 py-2 bg-black text-red-900 dark:bg-black dark:text-white border border-black dark:border-white rounded-md transition-all duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black" onClick={()=>handleAddToCart(product._id)}>
+            <button disabled={product.stock <= 0} className="px-6 py-2 bg-black text-red-900 dark:bg-black dark:text-white border border-black dark:border-white rounded-md transition-all duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black" onClick={()=>handleAddToCart(product)}>
               Add to Cart
             </button>
 
             {/* Add to Favorites Button */}
-            <button className="px-6 py-2 bg-transparent text-black dark:text-white border border-black dark:border-white rounded-md transition-all duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black">
+            <button onClick={()=>handleAddToFavourite(product._id)} className="px-6 py-2 bg-transparent text-black dark:text-white border border-black dark:border-white rounded-md transition-all duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black">
               Add to Favorites
             </button>
           </div>
@@ -228,11 +303,13 @@ if (loading) {
         {reviewModel && (
           <div className='flex flex-col'>
 
-            <form className="space-y-4 w-full max-w-md mx-auto">
+            <form onSubmit={handleReviewSubmit} className="space-y-4 w-full max-w-md mx-auto">
               {/* Comment Input */}
               <div className="w-full">
                 <input
                   type="text"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
                   placeholder="Enter comment"
                   className="w-full border-b-2 dark:bg-black dark:text-white border-black focus:outline-none focus:border-gray-700 p-2 text-sm"
                 />
@@ -245,6 +322,8 @@ if (loading) {
                   type="number"
                   min="1"
                   max="5"
+                  value={rating}
+                  onChange={(e) => setRating(e.target.value)}
                   placeholder="Rate"
                   className="border-b-2 border-black dark:text-white dark:bg-black focus:outline-none focus:border-gray-700 p-1 text-sm w-20"
                 />

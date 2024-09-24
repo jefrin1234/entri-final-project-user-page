@@ -6,9 +6,10 @@ import axiosInstance from '../config/axiosInstance'
 import Spinner from '../components/LoadingComponent'
 import { useDispatch } from 'react-redux'
 import { setUserDetails } from '../slices/userSlice'
-import { setCart } from '../slices/cartSlice'
+
 import fetchCartDetails from '../services/fetchCartDetails'
-import { useLocation } from 'react-router-dom'
+import fetchfavouriteDetails from '../services/fetchFavouriteDetails'
+
 
 function UserLayout() {
   const navigate = useNavigate()
@@ -31,11 +32,8 @@ function UserLayout() {
     dispatch(setUserDetails({loggedIn:true,user:response.data.data}))
   
     dispatch(fetchCartDetails())
-   
-  //  dispatch(setCart({
-  //   items: cartDetails.data.data.items,
-  //   totalPrice: cartDetails.data.data.totalPrice,
-  // }));
+    dispatch(fetchfavouriteDetails())
+    
 
    } catch (error) {
     setLoading(false)

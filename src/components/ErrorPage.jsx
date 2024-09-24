@@ -9,18 +9,17 @@ function ErrorPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="text-center bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h1 className="text-6xl font-bold text-red-500 mb-4">404</h1>
-        <p className="text-xl font-semibold mb-4">Oops! Page Not Found</p>
-        <p className="text-gray-600 mb-8">
-          The page you're looking for doesn't seem to exist. It might have been moved or deleted.
+    <div className="flex items-center justify-center min-h-screen bg-white">
+      <div className="text-center">
+        <h1 className="text-8xl font-bold text-black mb-4">404 Not Found</h1>
+        <p className="text-lg text-gray-600 mb-8">
+          Your visited page not found. You may go home page.
         </p>
         <button
           onClick={handleBackHome}
-          className="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition duration-300"
+          className="bg-red-500 text-white px-8 py-3 rounded hover:bg-red-600 transition duration-300"
         >
-          Go Back Home
+          Back to home page
         </button>
       </div>
     </div>

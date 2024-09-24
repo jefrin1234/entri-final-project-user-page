@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axiosInstance from '../config/axiosInstance';
 import ProductCard from '../components/ProductCard';
+import Spinner from '../components/Loading';
 
 function SearchPage() {
   const location = useLocation();
@@ -31,7 +32,7 @@ function SearchPage() {
   return (
     <div className="p-12">
       {loading ? (
-        <p>Loading...</p>
+       <Spinner/>
       ) : products?.length ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {products.map((product) => (
