@@ -70,7 +70,7 @@ export const router = createBrowserRouter([
         element:<Checkout/>
       },
       {
-        path:'/success',
+        path:'success',
         element:<PaymentSuccessPage/>
       },
       {

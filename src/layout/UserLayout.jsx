@@ -28,6 +28,8 @@ function UserLayout() {
       url:'/user/check-user'
     })
     setLoading(false)
+
+    console.log(response)
  
     dispatch(setUserDetails({loggedIn:true,user:response.data.data}))
   

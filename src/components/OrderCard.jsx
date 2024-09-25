@@ -92,8 +92,16 @@ function OrderCard({ order }) {
             </p>
 
             <p className='text-sm'>
-             shipping Status:
-             <span className={item.status === 'shipped' ? 'text-yellow-500' : 'text-red-500'}>{item.status}</span>
+              shipping Status:
+              <span className={
+                item.status === 'shipped' ? 'text-orange-500' :
+                  item.status === 'pending' ? 'text-red-500' :
+                    item.status === 'delivered' ? 'text-green-500' :
+                      'text-red'
+              }>
+                {item.status}
+              </span>
+
             </p>
           </div>
         ))}
@@ -103,13 +111,13 @@ function OrderCard({ order }) {
       <div className="mb-2 text-black dark:text-gray-300">
         <h4 className="font-bold">Payment Details</h4>
         <p className='text-green-500'>Method: {order.paymentMethod}</p>
-        <p className='text-red-600'>Status: {order.paymentStatus}</p>
+        <p className={order.paymentStatus === 'paid' ? 'text-green-500' : 'text-red-500'}>Status: {order.paymentStatus}</p>
       </div>
 
       {/* Shipping Address */}
       <div className="text-black  mb-4">
         <h4 className=" mb-1 font-bold dark:text-white">Shipping Address</h4>
-        <p className='dark:text-green-500'>{order.address.fullName}, {order.address.streetAddress}, {order.address.city}, {order.address.state} - {order.address.postalCode}</p>
+        <p className='dark:text-blue-500'>{order.address.fullName}, {order.address.streetAddress}, {order.address.city}, {order.address.state} - {order.address.postalCode}</p>
       </div>
 
       {/* Total Price and Overall Order Status */}

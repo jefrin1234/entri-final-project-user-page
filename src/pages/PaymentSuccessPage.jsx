@@ -33,6 +33,7 @@ function PaymentSuccessPage() {
 
   useEffect(() => {
     if (sessionId) {
+      console.log(sessionId)
       checkPaymentStatus();
     }
   }, [sessionId]);
@@ -47,7 +48,7 @@ function PaymentSuccessPage() {
       <h1 className="text-2xl font-bold text-green-600 mb-4">Payment Successful!</h1>
       <p className="text-lg text-gray-700 mb-4">Your payment was processed successfully. Thank you for your purchase!</p>
      
-      <Link to={'/user/orders'} className="mt-6 px-4 py-2 bg-green-600 text-white rounded shadow hover:bg-green-700 transition duration-200">Go to Homepage</Link>
+      <Link to={'/user/orders'} className="mt-6 px-4 py-2 bg-green-600 text-white rounded shadow hover:bg-green-700 transition duration-200">Go to Orders</Link>
     </div>
   );
 }
