@@ -74,7 +74,10 @@ function OrderCard({ order }) {
   return (
     <div className="bg-white border dark:bg-black shadow-lg rounded-lg p-4 mb-4 w-full max-w-3xl mx-auto transition duration-300 ease-in-out hover:shadow-xl">
       {/* Order Date */}
-      <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+      <div  className="text-sm text-black dark:text-gray-400 mb-2">
+        OrderId : <span className='text-green-500'>{order._id}</span>
+      </div>
+      <div className="text-sm text-black dark:text-gray-400 mb-2">Date : 
         <span>{new Date(order.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
       </div>
 

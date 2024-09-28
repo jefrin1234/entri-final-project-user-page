@@ -69,6 +69,9 @@ function ProductDetails() {
 
 
   const handleAddToCart = async (product) => {
+    if(!loggedIn){
+      return toast.error("please login")
+    }
     try {
       const data = {
         productId: product._id,

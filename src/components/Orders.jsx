@@ -80,6 +80,7 @@ function Orders() {
         url: '/orders/user-orders',
       });
       setLoading(false);
+      console.log(response.data.data)
       setOrders(response.data.data);
     } catch (error) {
       setLoading(false);

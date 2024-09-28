@@ -19,6 +19,7 @@ import Profile from "../components/Profile";
 import Orders from "../components/Orders";
 import Address from "../components/address";
 import Favourites from "../pages/Favourites";
+import AboutUs from "../pages/AboutPage";
 
 
 
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
       {
         path:'product-details/:productId',
         element:<ProductDetails/>
+      },
+      {
+         path:'about',
+         element:<AboutUs/>
       },
       {
         path:'search',
