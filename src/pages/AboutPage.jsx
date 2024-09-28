@@ -1,4 +1,5 @@
 import React from 'react';
+import{Link} from 'react-router-dom'
 
 const AboutUs = () => {
   return (
@@ -76,9 +77,9 @@ const AboutUs = () => {
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto  dark:text-white">
             Become a part of our growing family of happy customers. Enjoy the best deals, exclusive discounts, and a shopping experience like no other.
           </p>
-          <button className="mt-6 px-6 py-3 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 dark:text-white ">
+          <Link to={'/'} className="mt-6 px-6 py-3 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 dark:text-white ">
             Start Shopping Now
-          </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -25,6 +25,7 @@ function UserProfile() {
     setIsLogoutModel(true);
   };
 
+
   // Ensure the menu closes on resize for large screens
   useEffect(() => {
     const handleResize = () => {
@@ -111,7 +112,7 @@ function UserProfile() {
             Manage Address
           </Link>
           <Link
-            to="settings"
+            to=""
             onClick={closeMenu}
             className={`${
               location.pathname === '/user/settings'

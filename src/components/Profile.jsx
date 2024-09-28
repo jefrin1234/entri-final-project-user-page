@@ -44,6 +44,7 @@ function Profile() {
       if (response.data.success) {
         // setSuccess('Password changed successfully');
         toast.success("password changed successfully")
+        handleCancel()
         
       } else if(response.data.error){
         
