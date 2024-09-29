@@ -8,14 +8,14 @@ function UserProfile() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogoutModel, setIsLogoutModel] = useState(false);
 
-  // Toggle menu function for medium and small screens
+  
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Close menu on link click for medium and small screens
+  
   const closeMenu = () => {
-    if (window.innerWidth < 1024) { // Applies to md and below screens
+    if (window.innerWidth < 1024) { 
       setIsMenuOpen(false);
     }
   };
@@ -26,20 +26,18 @@ function UserProfile() {
   };
 
 
-  // Ensure the menu closes on resize for large screens
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
-        setIsMenuOpen(true); // Automatically open the menu on large screens
+        setIsMenuOpen(true); 
       } else {
-        setIsMenuOpen(false); // Close menu on smaller screens
+        setIsMenuOpen(false); 
       }
     };
 
-    // Set initial menu visibility based on screen size
     handleResize();
 
-    // Add event listener for resizing the screen
+ 
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -49,7 +47,7 @@ function UserProfile() {
 
   return (
     <div className="h-screen flex flex-col lg:flex-row p-6">
-      {/* Hamburger menu for medium and smaller screens */}
+    
       <div className="lg:hidden p-4">
         <button
           onClick={toggleMenu}
@@ -59,7 +57,7 @@ function UserProfile() {
         </button>
       </div>
 
-      {/* Sidebar Navigation */}
+      
       <div
         className={`flex-shrink-0 w-full lg:w-1/4 lg:h-full h-auto border-r lg:static bg-transparent lg:overflow-y-auto lg:py-6 ${
           isMenuOpen ? 'block' : 'hidden'
@@ -136,7 +134,7 @@ function UserProfile() {
         <Logout onClose={() => setIsLogoutModel(false)} />
       )}
 
-      {/* Main Content */}
+  
       <div className="flex-grow h-full overflow-y-auto p-4">
         <Outlet />
       </div>

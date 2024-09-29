@@ -5,7 +5,7 @@ const AboutUs = () => {
   return (
     <div className="dark:text-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Our Story Section */}
+       
         <div className="md:flex md:justify-between md:items-center">
           <div className="md:w-1/2">
             <h2 className="text-3xl font-extrabold text-gray-900 dark:text-red-500">Our Story</h2>
@@ -19,13 +19,12 @@ const AboutUs = () => {
           <div className="md:w-1/2 mt-8 md:mt-0 md:pl-8">
             <img
               className="w-full rounded-lg"
-              src="https://media.istockphoto.com/id/1685504205/photo/working-from-home.jpg?s=612x612&w=0&k=20&c=F6WXc6todzfxy5pcWURHFheayr1qslju1hVbCIWHBd4=" // Replace with your image URL
+              src="https://media.istockphoto.com/id/1685504205/photo/working-from-home.jpg?s=612x612&w=0&k=20&c=F6WXc6todzfxy5pcWURHFheayr1qslju1hVbCIWHBd4="
               alt="Our Story"
             />
           </div>
         </div>
 
-        {/* Our Mission Section */}
         <div className="mt-12 text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 dark:text-red-500">Our Mission</h2>
           <p className=" dark:text-white mt-4 text-gray-600 max-w-2xl mx-auto">
@@ -33,7 +32,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        {/* What We Offer Section */}
+       
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
           <div className="p-6 border rounded-lg shadow-md">
             <i className="fas fa-tags text-3xl text-red-500"></i>
@@ -52,7 +51,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* Features Section */}
+  
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 text-center">
           <div className="p-6 border rounded-lg shadow-md">
             <i className="fas fa-shipping-fast text-3xl text-red-500"></i>
@@ -71,7 +70,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* Call to Action Section */}
+ 
         <div className="mt-12 text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 dark:text-red-500">Join Us Today!</h2>
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto  dark:text-white">

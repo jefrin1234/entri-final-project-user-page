@@ -3,24 +3,24 @@ import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axiosInstance from '../config/axiosInstance';
 
-const ITEMS_PER_PAGE = 5; // Set the number of ratings per page
+const ITEMS_PER_PAGE = 5; 
 
 function ProductRatings() {
   const [ratings, setRatings] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalRatings, setTotalRatings] = useState(0); // Store total number of ratings
+  const [totalRatings, setTotalRatings] = useState(0); 
   const { productId } = useParams();
 
   const fetchProductRatings = async (productId, page) => {
     try {
       const response = await axiosInstance({
         method: 'GET',
-        url: `rating/product/${productId}?page=${page}&limit=${ITEMS_PER_PAGE}`, // Pagination
+        url: `rating/product/${productId}?page=${page}&limit=${ITEMS_PER_PAGE}`, 
       });
 
       if (response) {
-        setRatings(response.data.data); // Assuming response.data contains the array of ratings
-        setTotalRatings(response.data.totalRatings); // Store total ratings count
+        setRatings(response.data.data); 
+        setTotalRatings(response.data.totalRatings); 
       } else {
         toast.error('Error getting ratings');
       }
@@ -44,7 +44,7 @@ function ProductRatings() {
     ));
   };
 
-  const totalPages = Math.ceil(totalRatings / ITEMS_PER_PAGE); // Calculate total number of pages
+  const totalPages = Math.ceil(totalRatings / ITEMS_PER_PAGE); 
   const handlePageChange = (page) => {
     if (page > 0 && page <= totalPages) {
       setCurrentPage(page);
@@ -55,7 +55,7 @@ function ProductRatings() {
     <div className="p-4 max-w-4xl mx-auto">
       <h2 className="text-xl font-bold mb-4 dark:text-green-500">Product Ratings</h2>
 
-      {/* Ratings List */}
+    
       <div>
         {ratings?.length > 0 ? (
           <div>
@@ -77,10 +77,10 @@ function ProductRatings() {
         )}
       </div>
 
-      {/* Pagination Controls */}
+      
       {totalRatings > 0 && (
         <div className="mt-4 flex justify-center">
-          {/* Previous Button */}
+       
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
@@ -89,10 +89,9 @@ function ProductRatings() {
             Previous
           </button>
 
-          {/* Page Number Display */}
           <span className="px-4">{currentPage}</span>
 
-          {/* Next Button */}
+          
           <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}

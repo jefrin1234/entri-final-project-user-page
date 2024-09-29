@@ -16,7 +16,7 @@ function RecommededProducts({brand,name}) {
         params: { brand:brand,name:name },
       });
       setProducts(response.data.data);
-      // console.log(response)
+   
     } catch (error) {
      console.log(error)
     } finally {
@@ -39,7 +39,7 @@ function RecommededProducts({brand,name}) {
   return (
   
        <div className="w-full md:w-3/4 p-4 overflow-y-auto h-full md:h-auto  border-b-2 border-gray-300 dark:border-gray-600">
-        {/* Separate scroll for product section */}
+      
         {loading ? (
           <div className="text-center">Loading...</div>
         ) : products.length === 0 ? (

@@ -43,7 +43,7 @@ function PaymentSuccessPage() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100  p-4">
       <img src={SUCCESSIMAGE} alt="Success" className="w-32 h-32 mb-6" />
       <h1 className="text-2xl font-bold text-green-600 mb-4">Payment Successful!</h1>
       <p className="text-lg text-gray-700 mb-4">Your payment was processed successfully. Thank you for your purchase!</p>

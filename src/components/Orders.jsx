@@ -1,64 +1,3 @@
-// import React, { useEffect, useState } from 'react'
-// import axiosInstance from '../config/axiosInstance'
-// import Spinner from './LoadingComponent'
-// import OrderCard from './OrderCard'
-
-// function Orders() {
-
-//   const [loading, setLoading] = useState(true)
-//   const [error, setError] = useState(false)
-//   const [orders, setorders] = useState([])
-
-//   const fetchUserorders = async () => {
-
-//     try {
-//       const response = await axiosInstance({
-//         method: 'GET',
-//         url: '/orders/user-orders',
-
-//       })
-//       setLoading(false)
-//       console.log(response.data.data)
-//       setorders(response.data.data)
-//     } catch (error) {
-//       setLoading(false)
-//       console.log(error)
-//       setError(true)
-//     }
-
-
-//   }
-
-//   useEffect(() => {
-//     fetchUserorders()
-//   }, [])
-
-//   // if(loading){
-//   //   return <Spinner/>
-//   // }
-
-//   return (
-//     <div>
-//       {
-//         error ? (
-//           <div>Error getting orders</div>
-//         ) : (
-//           <div>
-//             {
-//               orders.map((order) => (
-//                <OrderCard key={order._id} order={order}/>
-//               ))
-//             }
-//           </div>
-//         )
-
-
-//       }
-//     </div>
-//   )
-// }
-
-// export default Orders
 
 
 
@@ -66,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import axiosInstance from '../config/axiosInstance';
 import Spinner from './LoadingComponent';
 import OrderCard from './OrderCard';
-import { FaBoxOpen } from 'react-icons/fa'; // Importing icon for better visual
+import { FaBoxOpen } from 'react-icons/fa';
 
 function Orders() {
   const [loading, setLoading] = useState(true);

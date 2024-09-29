@@ -35,7 +35,7 @@ const ImageSlider = () => {
   const handleNext = () => {
     const isLastSlide = currentIndex === slides.length - 1;
     
-    // If we're at the last slide, slide to the first one in the same direction
+  
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
@@ -47,7 +47,7 @@ const ImageSlider = () => {
           transform: `translateY(-${currentIndex * 100}%)`,
         }}
       >
-        {/* Slides */}
+ 
         {slides.map((slide, index) => (
           <div key={index} className="w-full h-full flex-shrink-0 relative">
             <img
@@ -65,23 +65,23 @@ const ImageSlider = () => {
         ))}
       </div>
 
-      {/* Navigation Arrows */}
+   
       <div className="absolute bottom-24 right-16 flex space-x-8">
         <button
           onClick={handlePrev}
           className="bg-white text-black p-4 rounded-full shadow hover:bg-gray-300 transition"
         >
-          &#8592; {/* Left Arrow */}
+          &#8592;
         </button>
         <button
           onClick={handleNext}
           className="bg-white text-black p-4 rounded-full shadow hover:bg-gray-300 transition"
         >
-          &#8594; {/* Right Arrow */}
+          &#8594; 
         </button>
       </div>
 
-      {/* Indicators */}
+    
       <div className="absolute bottom-8 left-12 flex space-x-3">
         {slides.map((_, index) => (
           <button

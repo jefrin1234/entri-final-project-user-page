@@ -1,8 +1,7 @@
 
 
 import axiosInstance from '../config/axiosInstance';
-import {setfavourite} from '../slices/favouriteSlice'
-; // Adjust the path to where your favouriteSlice is
+import {setfavourite} from '../slices/favouriteSlice';
 
  const fetchfavouriteDetails = () => {
   return async (dispatch) => {
@@ -13,17 +12,16 @@ import {setfavourite} from '../slices/favouriteSlice'
         url: '/favourites/all-favourites',
       });
 
-      const favouriteDetails = response.data.data; // Assuming the data comes like this
+      const favouriteDetails = response.data.data; 
        console.log(favouriteDetails)
-      // Dispatch to update Redux state
-      // console.log(response.data.data)
+      
        dispatch(setfavourite({
-        items: favouriteDetails,
+        favourites: favouriteDetails,
     
       }));
     } catch (error) {
       console.error("Failed to fetch favourite details:", error);
-      // You can dispatch an error action here if you have error handling in Redux
+      
     }
   };
 };

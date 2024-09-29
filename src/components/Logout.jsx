@@ -5,11 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUserDetails } from '../slices/userSlice';
 import {setCart} from '../slices/cartSlice'
+import { setfavourite } from '../slices/favouriteSlice';
+
 function Logout({ onClose }) {
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const handleCancel = () => {
-    onClose(); // Close modal
+    onClose();
   };
 
   const handleLogout = async () => {
@@ -25,11 +27,12 @@ function Logout({ onClose }) {
           items:[],
           totalPrice:0
         }));
+        dispatch(setfavourite({favourites:[]}))
         toast.success('Logout successful');
         setTimeout(() => {
-          navigate('/'); // Navigate after showing the toast
-          onClose(); // Close modal after logout
-        }, 100); // Slight delay to ensure toast is displayed
+          navigate('/'); 
+          onClose();
+        }, 100);
       }
     } catch (error) {
       toast.error('Error logging out');

@@ -69,7 +69,7 @@ function ProductDetails() {
 
 
   const handleAddToCart = async (product) => {
-    if(!loggedIn){
+    if (!loggedIn) {
       return toast.error("please login")
     }
     try {
@@ -100,7 +100,7 @@ function ProductDetails() {
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate form inputs
+
     if (!comment || !rating) {
       toast.error("Please enter a comment and rating.");
       return;
@@ -116,27 +116,27 @@ function ProductDetails() {
       if (response.data.success) {
         toast.success("Rating added successfully");
 
-        // Optionally refresh the ratings or reset form fields
+
         setComment('');
         setRating('');
       }
     } catch (error) {
       if (error.response) {
-        // The request was made and the server responded with a status code
+
         if (error.response.status === 403) {
           console.log("Forbidden: " + error.response.data.message);
           toast.error("you can only rate after purchasing this product");
         } else {
-          // Handle other status codes
+
           const message = error.response.data?.message || "An error occurred";
           toast.error(message);
         }
       } else if (error.request) {
-        // The request was made but no response was received
+
         console.log("No response received:", error.request);
         toast.error("No response from the server. Please try again.");
       } else {
-        // Something happened in setting up the request that triggered an error
+
         console.log("Error:", error.message);
         toast.error("An unexpected error occurred.");
       }
@@ -144,29 +144,29 @@ function ProductDetails() {
   };
 
 
- const  handleAddToFavourite = async(productId)=>{
-  
-   try {
-    if(!loggedIn){
-      return toast.error("please login")
-    }
-    console.log(productId)
-    const response = await axiosInstance({
-      method:'POST',
-      url:'/favourites/add-favourite',
-      data:{
-        productId:productId
-      }
-    })
-    console.log(response)
-    toast.success("Product Added to favourites")
-    dispatch(fetchfavouriteDetails())
-  } catch (error) {
-    console.log(error)
-    toast.error("Product already in favourites")
-  }
+  const handleAddToFavourite = async (productId) => {
 
- }
+    try {
+      if (!loggedIn) {
+        return toast.error("please login")
+      }
+      console.log(productId)
+      const response = await axiosInstance({
+        method: 'POST',
+        url: '/favourites/add-favourite',
+        data: {
+          productId: productId
+        }
+      })
+      console.log(response)
+      toast.success("Product Added to favourites")
+      dispatch(fetchfavouriteDetails())
+    } catch (error) {
+      console.log(error)
+      toast.error("Product already in favourites")
+    }
+
+  }
 
 
 
@@ -188,11 +188,11 @@ function ProductDetails() {
 
   return (
     <div className="container mx-auto p-16 relative">
-      {/* Main Section */}
+
       <div className="lg:flex gap-6">
-        {/* Image Thumbnails & Main Image */}
+
         <div className="w-full lg:w-1/2 mb-8 lg:mb-0 flex flex-col gap-8 lg:flex-row lg:gap-6">
-          {/* Thumbnails */}
+
           <div className="flex lg:flex-col gap-3 lg:w-1/4">
             {product.images.map((imageUrl, index) => (
               <div
@@ -209,7 +209,7 @@ function ProductDetails() {
             ))}
           </div>
 
-          {/* Main Image */}
+
           <div className="w-full lg:w-3/4 relative">
             <div className="border aspect-square relative">
               <img
@@ -221,7 +221,7 @@ function ProductDetails() {
               />
             </div>
 
-            {/* Zoom Image */}
+
             {zoomImage && (
               <div className="absolute hidden md:block top-0 right-[-540px] min-w-[500px] overflow-hidden min-h-[400px] bg-slate-200 p-1 border">
                 <div
@@ -237,7 +237,6 @@ function ProductDetails() {
           </div>
         </div>
 
-        {/* Product Information */}
         <div className="w-full lg:w-1/2 space-y-6">
           <h1 className="text-2xl font-semibold dark:text-blue-500">{product.name}</h1>
           <div className="flex items-center space-x-4">
@@ -275,13 +274,13 @@ function ProductDetails() {
             <p className="text-black dark:text-blue-500">{product.description}</p>
           </div>
           <div className="flex gap-4">
-            {/* Add to Cart Button */}
-            <button disabled={product.stock <= 0} className="px-6 py-2 bg-black text-red-900 dark:bg-black dark:text-white border border-black dark:border-white rounded-md transition-all duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black" onClick={()=>handleAddToCart(product)}>
+         
+            <button disabled={product.stock <= 0} className="px-6 py-2 bg-black text-red-900 dark:bg-black dark:text-white border border-black dark:border-white rounded-md transition-all duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black" onClick={() => handleAddToCart(product)}>
               Add to Cart
             </button>
 
-            {/* Add to Favorites Button */}
-            <button onClick={()=>handleAddToFavourite(product._id)} className="px-6 py-2 bg-transparent text-black dark:text-white border border-black dark:border-white rounded-md transition-all duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black">
+       
+            <button onClick={() => handleAddToFavourite(product._id)} className="px-6 py-2 bg-transparent text-black dark:text-white border border-black dark:border-white rounded-md transition-all duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black">
               Add to Favorites
             </button>
           </div>
@@ -289,13 +288,13 @@ function ProductDetails() {
         </div>
       </div>
 
-      {/* Ratings Section */}
+      
       <div className="mt-10">
 
         <ProductRatings />
       </div>
 
-      {/* Add Review Section */}
+
       <div className="mt-10">
         <button
           onClick={openReviewModel}
@@ -307,7 +306,7 @@ function ProductDetails() {
           <div className='flex flex-col'>
 
             <form onSubmit={handleReviewSubmit} className="space-y-4 w-full max-w-md mx-auto">
-              {/* Comment Input */}
+         
               <div className="w-full">
                 <input
                   type="text"
@@ -318,7 +317,6 @@ function ProductDetails() {
                 />
               </div>
 
-              {/* Rating Section */}
               <div className="flex items-center space-x-3">
                 <span className="text-sm">Rate from 1 to 5:</span>
                 <input
@@ -332,7 +330,7 @@ function ProductDetails() {
                 />
               </div>
 
-              {/* Submit Button */}
+             
               <div>
                 <button
                   type="submit"

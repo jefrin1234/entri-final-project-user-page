@@ -7,7 +7,7 @@ function Footer() {
       <footer className=" bg-rose-200 text-black  font-bold border  py-10 dark:bg-black dark:text-white mt-20">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 px-4">
         
-        {/* Exclusive Section */}
+        
         <div>
           <h2 className="text-2xl font-semibold mb-4">Exclusive</h2>
           <p className="mb-2">Subscribe</p>
@@ -26,7 +26,6 @@ function Footer() {
           </form>
         </div>
 
-        {/* Support Section */}
         <div>
           <h2 className="text-xl font-semibold mb-4">Support</h2>
           <p>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
@@ -34,7 +33,7 @@ function Footer() {
           <p>+88015-88888-9999</p>
         </div>
 
-        {/* Account Section */}
+      
         <div>
           <h2 className="text-xl font-semibold mb-4">Account</h2>
           <ul>
@@ -46,7 +45,7 @@ function Footer() {
           </ul>
         </div>
 
-        {/* Quick Link Section */}
+     
         <div>
           <h2 className="text-xl font-semibold mb-4">Quick Link</h2>
           <ul>
@@ -57,7 +56,7 @@ function Footer() {
           </ul>
         </div>
 
-        {/* Download App Section */}
+        
         <div>
           <h2 className="text-xl font-semibold mb-4">Download App</h2>
           <p className="mb-4">Save $3 with App New User Only</p>

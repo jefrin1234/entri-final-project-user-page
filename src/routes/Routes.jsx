@@ -8,7 +8,6 @@ import CategoryProducts from "../pages/CategoryProducts";
 import ProductDetails from "../components/ProductDetails";
 import SearchPage from "../pages/SearchPage";
 import LoginPage from "../pages/LoginPage";
-import SignupPage from "../pages/signupPage";
 import Cart from "../pages/CartPage";
 import Checkout from "../pages/CheckoutPage";
 import PaymentSuccessPage from "../pages/PaymentSuccessPage";
@@ -20,10 +19,7 @@ import Orders from "../components/Orders";
 import Address from "../components/address";
 import Favourites from "../pages/Favourites";
 import AboutUs from "../pages/AboutPage";
-
-
-
-
+import SignupPage from "../pages/SignupPage";
 
 
 
@@ -63,11 +59,11 @@ export const router = createBrowserRouter([
       },
       
       {
-        path:'/cart',
+        path:'cart',
         element:<Cart/>
       },
        {
-         path:'/favourites',
+         path:'favourites',
          element:<Favourites/>
        },
       {

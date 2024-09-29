@@ -42,18 +42,18 @@ function Profile() {
       });
 
       if (response.data.success) {
-        // setSuccess('Password changed successfully');
+       
         toast.success("password changed successfully")
         handleCancel()
         
       } else if(response.data.error){
         
-        // setError('Failed to change password. Please check your current password.');
+        
         toast.error(response.data.error)
 
       }
     } catch (err) {
-      // setError('An error occurred while changing the password');
+      
       toast.error("Please check your current password")
 
     }

@@ -20,16 +20,17 @@ const Checkout = () => {
 
   const items = useSelector((state) => state.cart.items);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
+
+  const finalPrice = totalPrice
   const navigate = useNavigate();
 
-  // Fetch user addresses on component mount
+  
   const fetchUserAddresses = async () => {
     try {
       const response = await axiosInstance.get('/address/user-address');
       const addresses = response.data.data;
       setAllAddresses(addresses);
 
-      // If addresses exist, set the first one as the current address
       if (addresses.length > 0) {
         setCurrentAddress(addresses[0]);
         setNewAddressMode(false);
@@ -39,7 +40,7 @@ const Checkout = () => {
     }
   };
 
-  // Handle selecting a different address from the dropdown
+
   const handleSelectAddress = (e) => {
     const selectedAddress = allAddresses.find((address) => address._id === e.target.value);
     if (selectedAddress) {
@@ -48,7 +49,7 @@ const Checkout = () => {
     }
   };
 
-  // Handle clearing the input fields for adding a new address
+  
   const clearInputFields = () => {
     setCurrentAddress({
       fullName: '',
@@ -62,7 +63,7 @@ const Checkout = () => {
     setNewAddressMode(true);
   };
 
-  // Handle adding a new address
+
   const handleAddressChange = async () => {
     if (Object.values(currentAddress).some((field) => field.trim() === '')) {
       toast.error('Please fill in all the fields.');
@@ -90,13 +91,15 @@ const Checkout = () => {
 
    try {
 
-    let shipping_rate
+    let shipping_rate;
 
-    if(totalPrice > 1000){
+    if(finalPrice < 1000){
       shipping_rate = 40 
     }else{
      shipping_rate =  0
     }
+
+     console.log(shipping_rate)
 
     const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
 
@@ -104,11 +107,11 @@ const Checkout = () => {
       method:'POST',
       url:'/payment/create-checkout-session',
       data: {
-        items: items,  // Array of items in the cart
-        totalPrice: totalPrice,  // Total price of the items
+        items: items,  
+        totalPrice: finalPrice,  
         address: currentAddress,
         shipping_rate:shipping_rate
-         // Shipping address
+         
       }
     })
 
@@ -131,11 +134,11 @@ const Checkout = () => {
 
   return (
     <div className="container mx-auto p-4 lg:p-6 flex flex-col lg:flex-row gap-6 justify-between dark:bg-black dark:text-white">
-      {/* Left Section: Addresses */}
+
       <div className="w-full lg:w-2/3">
         <h2 className="text-xl font-bold mb-4">Shipping Address</h2>
 
-        {/* Dropdown for selecting saved addresses */}
+       
         {allAddresses.length > 0 && (
           <div className="mb-16 mt-5">
             <label className="block font-semibold mb-2">Select a Saved Address:</label>
@@ -153,7 +156,7 @@ const Checkout = () => {
           </div>
         )}
 
-        {/* Form for the current address */}
+       
         <form className="flex flex-col gap-4">
           <input
             type="text"
@@ -206,7 +209,7 @@ const Checkout = () => {
           />
         </form>
 
-        {/* Button to clear input fields and add new address */}
+   
         <div className="mt-4">
           {newAddressMode === true || allAddresses.length === 0 ? (
             <button onClick={handleAddressChange} className="bg-blue-500 text-white px-4 py-2 rounded">
@@ -220,7 +223,6 @@ const Checkout = () => {
         </div>
       </div>
 
-      {/* Right Section: Order Summary and Payment Options */}
       <div className="w-full lg:w-1/3 bg-white dark:bg-black shadow-lg rounded-lg p-6">
         <h2 className="text-xl font-bold mb-4">Order Summary</h2>
 
@@ -247,26 +249,25 @@ const Checkout = () => {
           </p>
         </div>
 
-        {/* Payment Options */}
+      
         <div className="mt-6">
           <h2 className="text-xl font-bold mb-4">Payment Method</h2>
 
-          {/* Cash on Delivery Option */}
+          
           <div className="mb-4">
             <input
               type="radio"
               name="paymentMethod"
               value="COD"
-              disabled={totalPrice < 1000}
+              disabled={finalPrice < 1000}
               checked={paymentMethod === 'COD'}
               onChange={() => setPaymentMethod('COD')}
             />
             <span className="ml-2">
-              Cash on Delivery (COD) {totalPrice < 1000 && <span className="text-red-500">(Not available for orders under $1000)</span>}
+              Cash on Delivery (COD) {finalPrice < 1000 && <span className="text-red-500">(Not available for orders under $1000)</span>}
             </span>
           </div>
 
-          {/* Stripe Payment Option */}
           <div className="mb-4">
             <input
               type="radio"
@@ -278,7 +279,7 @@ const Checkout = () => {
             <span className="ml-2">Pay with Card</span>
           </div>
 
-          {/* Confirm Order Button */}
+         
           <button
             disabled={!paymentMethod || !currentAddress._id}
             onClick={(handlePayment)}

@@ -12,9 +12,8 @@ function CategoryProducts() {
   const [products, setProducts] = useState([]);
   const [sortOption, setSortOption] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showFilterSection, setShowFilterSection] = useState(false); // For toggling filter section on smaller screens
-
-  // Fetch filter options for the category
+  const [showFilterSection, setShowFilterSection] = useState(false);
+  
   const fetchCategoryDetails = async (category) => {
     try {
       const response = await axiosInstance({
@@ -27,7 +26,7 @@ function CategoryProducts() {
     }
   };
 
-  // Fetch products based on selected filters and sort options
+  
   const fetchProducts = async () => {
     setLoading(true);
     try {
@@ -37,6 +36,7 @@ function CategoryProducts() {
         params: { category, ...selectedFilters, sort: sortOption },
       });
       setProducts(response.data.data);
+      console.log(response.data.data)
     } catch (error) {
       toast.error("Error fetching products");
     } finally {
@@ -49,27 +49,27 @@ function CategoryProducts() {
     fetchProducts();
   }, [category, selectedFilters, sortOption]);
 
-  // Handle filter changes
+ 
   const handleFilterChange = (filterName, value) => {
     if (value === '') {
-      // If "None" or "All" option is selected, remove that filter
+     
       setSelectedFilters((prev) => {
         const updatedFilters = { ...prev };
         delete updatedFilters[filterName];
         return updatedFilters;
       });
     } else {
-      // Set the new filter value
+    
       setSelectedFilters((prev) => ({ ...prev, [filterName]: value }));
     }
-    setShowFilterSection(false); // Close filter section after choosing an option
+    setShowFilterSection(false); 
   };
 
-  // Clear all filters
+
   const handleClearFilters = () => {
     setSelectedFilters({});
     setSortOption('');
-    setShowFilterSection(false); // Close filter section on smaller screens
+    setShowFilterSection(false); 
   };
 
   const scrollTop = () => {
@@ -78,7 +78,7 @@ function CategoryProducts() {
 
   return (
     <div className="container mx-auto py-10 flex flex-col md:flex-row h-screen">
-      {/* Button to toggle filter and sort section on small screens */}
+     
       <button
         className="md:hidden dark:bg-white dark:text-black p-2 rounded-md mb-4 bg-black text-white"
         onClick={() => setShowFilterSection(!showFilterSection)}
@@ -86,13 +86,13 @@ function CategoryProducts() {
         {showFilterSection ? 'Close Filters & Sort' : 'Open Filters & Sort'}
       </button>
 
-      {/* Filters and sorting section */}
+    
       <div
         className={`${
           showFilterSection ? 'block' : 'hidden'
         } md:block w-full md:w-1/4 p-4 shadow-md rounded-lg h-full md:h-auto overflow-y-auto`}
       >
-        {/* X symbol for closing the filter section on smaller screens */}
+      
         <button
           className="block md:hidden bg-red-500 text-white p-2 rounded-md mb-4"
           onClick={() => setShowFilterSection(false)}
@@ -102,7 +102,6 @@ function CategoryProducts() {
 
         <h3 className="font-semibold mb-4 text-xl">Filters</h3>
 
-        {/* Brands Filter */}
         <div className="mb-4">
           <h4 className="font-semibold text-lg mb-2">Brands</h4>
           <label className="block mb-1">
@@ -131,7 +130,7 @@ function CategoryProducts() {
           ))}
         </div>
 
-        {/* Colours Filter */}
+ 
         <div className="mb-4">
           <h4 className="font-semibold text-lg mb-2">Colours</h4>
           <label className="block mb-1">
@@ -160,7 +159,7 @@ function CategoryProducts() {
           ))}
         </div>
 
-        {/* Names Filter */}
+ 
         <div className="mb-4">
           <h4 className="font-semibold text-lg mb-2">Types</h4>
           <label className="block mb-1">
@@ -189,7 +188,7 @@ function CategoryProducts() {
           ))}
         </div>
 
-        {/* Sorting options */}
+      
         <div>
           <h4 className="font-semibold text-lg mb-2">Sort By</h4>
           <select
@@ -210,7 +209,6 @@ function CategoryProducts() {
           </select>
         </div>
 
-        {/* Clear Filters Button */}
         <button
           onClick={handleClearFilters}
           className="mt-4 px-4 py-2 bg-red-500 text-white rounded-md"
@@ -219,9 +217,9 @@ function CategoryProducts() {
         </button>
       </div>
 
-      {/* Products section */}
+      
       <div className="w-full md:w-3/4 p-4 overflow-y-auto h-full md:h-auto">
-        {/* Separate scroll for product section */}
+   
         {loading ? (
           <div className="text-center">Loading...</div>
         ) : products.length === 0 ? (

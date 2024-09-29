@@ -27,9 +27,7 @@ function SignupPage() {
       })
       const responseData = response.data
       
-      // console.log(responseData.success)
-     
-      // console.log(responseData)
+
     
      
       if(responseData.success){
@@ -53,7 +51,6 @@ function SignupPage() {
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="flex shadow-lg rounded-lg max-w-4xl w-full overflow-hidden">
         
-        {/* Left Side (Image) */}
         <div className="hidden md:block w-1/2">
           <img
             src="https://media.istockphoto.com/id/2155786242/photo/young-woman-in-studio-in-summer-clothes-modern-fashion.jpg?s=612x612&w=0&k=20&c=LGDPz_c4BvEfMidoVcV7agfSLVgXF59ByIAVHlvIld4="
@@ -62,7 +59,7 @@ function SignupPage() {
           />
         </div>
         
-        {/* Right Side (Form) */}
+      
         <div className="w-full md:w-1/2 p-8 ">
           <h2 className="text-4xl font-bold mb-4 dark:text-white">Create an account</h2>
           <p className="text-black dark:text-gray-500 mb-8 leading-relaxed">
@@ -70,7 +67,7 @@ function SignupPage() {
           </p>
           
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            {/* Name Field */}
+           
             <div>
              
               <input
@@ -84,7 +81,7 @@ function SignupPage() {
               {errors.name && <span className="text-red-500 text-sm">{errors.name.message}</span>}
             </div>
 
-            {/* Email/Phone Field */}
+           
             <div>
             
               <input
@@ -102,7 +99,7 @@ function SignupPage() {
               {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
             </div>
 
-            {/* Password Field */}
+           
             <div>
        
               <input
@@ -137,17 +134,6 @@ function SignupPage() {
                 )}
             </div>
 
-{/* 
-
-
-
-            {...register("confirmPassword", {
-                    required: "Please confirm your password",
-                    validate: (value) =>
-                      value === getValues("password") || "Passwords do not match",
-                  })} */}
-
-            {/* Submit Button */}
             <button
               type="submit"
               className="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition duration-300"
@@ -156,7 +142,7 @@ function SignupPage() {
             </button>
           </form>
 
-          {/* Already have an account */}
+          
           <p className="mt-6 text-center">
             Already have an account?{' '}
             <a href="/login" className="text-blue-500 hover:underline">
