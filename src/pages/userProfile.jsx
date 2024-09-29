@@ -99,7 +99,7 @@ function UserProfile() {
             My Wishlist
           </Link>
           <Link
-            to="address"
+            to="shipping-address"
             onClick={closeMenu}
             className={`${
               location.pathname === '/user/address'

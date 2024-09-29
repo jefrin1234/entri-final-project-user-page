@@ -16,10 +16,11 @@ import UserProfile from "../pages/userProfile";
 import Profile from "../components/Profile";
 
 import Orders from "../components/Orders";
-import Address from "../components/address";
 import Favourites from "../pages/Favourites";
 import AboutUs from "../pages/AboutPage";
 import SignupPage from "../pages/SignupPage";
+import ShippingAddress from "../components/ShippingAddress";
+
 
 
 
@@ -95,8 +96,8 @@ export const router = createBrowserRouter([
               element:<Favourites/>
           },
           {
-            path:'address',
-            element:<Address/>
+            path:'shpping-address',
+            element:<ShippingAddress/>
           }
         ]
       },

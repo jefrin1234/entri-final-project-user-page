@@ -3,7 +3,7 @@ import axiosInstance from '../config/axiosInstance';
 import Spinner from './LoadingComponent';
 import toast from 'react-hot-toast';
 
-function Address() {
+function ShippingAddress() {
   const [loading, setLoading] = useState(true);
   const [allAddress, setAllAddress] = useState([]);
   const [error, setError] = useState(false);
@@ -208,4 +208,4 @@ function Address() {
   );
 }
 
-export default Address;
+export default ShippingAddress;
