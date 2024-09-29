@@ -96,7 +96,7 @@ export const router = createBrowserRouter([
               element:<Favourites/>
           },
           {
-            path:'shpping-address',
+            path:'shipping-address',
             element:<ShippingAddress/>
           }
         ]
