@@ -15,6 +15,12 @@ function Favourites() {
   const dispatch = useDispatch();
 
   const handleAddToCart = async (product) => {
+
+    if (product.stock < 1) {
+      toast.error("This product is out of stock and cannot be added to the cart.");
+      return;
+    } 
+
     try {
       const data = {
         productId: product._id,
