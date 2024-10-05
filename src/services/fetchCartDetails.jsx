@@ -2,8 +2,7 @@
 
 import axiosInstance from '../config/axiosInstance';
 import { setCart } from '../slices/cartSlice';
-; // Adjust the path to where your cartSlice is
-
+;
  const fetchCartDetails = () => {
   return async (dispatch) => {
     try {
@@ -13,16 +12,15 @@ import { setCart } from '../slices/cartSlice';
         url: '/cart/cart-details',
       });
 
-      const cartDetails = response.data.data; // Assuming the data comes like this
-      // console.log(cartDetails)
-      // Dispatch to update Redux state
+      const cartDetails = response.data.data; 
+
       dispatch(setCart({
         items: cartDetails.items,
         totalPrice: cartDetails.totalPrice,
       }));
     } catch (error) {
       console.error("Failed to fetch cart details:", error);
-      // You can dispatch an error action here if you have error handling in Redux
+     
     }
   };
 };

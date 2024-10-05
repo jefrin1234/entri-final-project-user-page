@@ -9,9 +9,7 @@ export const favouriteSlice = createSlice({
     setfavourite(state, action) {
       
       state.favourites = action.payload.favourites;
-      
-
-       console.log(state.favourites)
+ 
      
     },
     addItemTofavourite(state, action) {

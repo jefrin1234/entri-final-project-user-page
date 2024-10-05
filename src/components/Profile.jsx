@@ -32,6 +32,7 @@ function Profile() {
 
     if (newPassword !== confirmPassword) {
       setError('New password and confirm password do not match');
+      toast.error("Password does'nt match")
       return;
     }
 
@@ -112,8 +113,8 @@ function Profile() {
           <button type="button" className="text-gray-600 dark:text-gray-400 hover:underline" onClick={handleCancel}>
             Cancel
           </button>
-          <button type="submit" className="px-6 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700">
-            Save Changes
+          <button type="submit" className="px-6 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 ">
+            Save 
           </button>
         </div>
       </form>

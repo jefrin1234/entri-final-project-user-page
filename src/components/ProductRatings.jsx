@@ -25,7 +25,7 @@ function ProductRatings() {
         toast.error('Error getting ratings');
       }
     } catch (error) {
-      console.log(error);
+     
       toast.error('Error getting product ratings');
     }
   };

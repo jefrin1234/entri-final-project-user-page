@@ -9,7 +9,7 @@ import { FaBoxOpen } from 'react-icons/fa';
 
 function Orders() {
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+   
   const [orders, setOrders] = useState([]);
 
   const fetchUserOrders = async () => {
@@ -22,9 +22,8 @@ function Orders() {
       console.log(response.data.data)
       setOrders(response.data.data);
     } catch (error) {
-      setLoading(false);
       console.error(error);
-      setError(true);
+     
     }
   };
 
@@ -55,11 +54,8 @@ function Orders() {
           ))}
         </div>
       )}
-      {error && (
-        <div className="mt-4 text-red-500 text-center">
-          Error fetching orders. Please try again later.
-        </div>
-      )}
+     
+     
     </div>
   );
 }

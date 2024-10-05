@@ -6,12 +6,12 @@ function Footer() {
   const { user } = useSelector((state) => state.user);
 
   return (
-    <div className="bg-rose-200 dark:bg-gray-900 text-gray-900 dark:text-gray-300 py-12">
+    <div className="bg-rose-200 dark:bg-black text-gray-900 dark:text-gray-300 py-12">
       <footer className="container mx-auto px-4">
-        {/* Footer Grid Section */}
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-12">
           
-          {/* Subscribe Section */}
+         
           <div>
             <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">Exclusive</h2>
             <p className="mb-4">Subscribe to get 10% off your first order</p>
@@ -29,7 +29,7 @@ function Footer() {
             </form>
           </div>
           
-          {/* Support Section */}
+        
           <div>
             <h2 className="text-xl font-semibold mb-6 text-gray-800 dark:text-gray-100">Support</h2>
             <p className="mb-1">111 Bijoy Sarani, Dhaka, Bangladesh</p>
@@ -37,7 +37,7 @@ function Footer() {
             <p>+88015-88888-9999</p>
           </div>
 
-          {/* Account Section */}
+        
           <div>
             <h2 className="text-xl font-semibold mb-6 text-gray-800 dark:text-gray-100">Account</h2>
             <ul className="space-y-2">
@@ -49,7 +49,7 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Quick Links Section */}
+         
           <div>
             <h2 className="text-xl font-semibold mb-6 text-gray-800 dark:text-gray-100">Quick Links</h2>
             <ul className="space-y-2">
@@ -61,10 +61,10 @@ function Footer() {
           </div>
         </div>
 
-        {/* App Download and Social Links Section */}
+       
         <div className="flex flex-col sm:flex-row items-center justify-between border-t border-gray-300 dark:border-gray-700 pt-8">
          
-          {/* Social Media Links */}
+  
           <div className="flex space-x-4 text-gray-600 dark:text-gray-400">
             <a href="#" className="hover:text-gray-800 dark:hover:text-gray-100">
               <FaFacebookF size={20} />
@@ -81,19 +81,19 @@ function Footer() {
           </div>
         </div>
 
-        {/* Links Section (Seller and Admin) */}
+
         <div className="flex flex-col sm:flex-row justify-between items-center mt-8 space-y-4 sm:space-y-0">
           <div className="text-green-600">
-            <a href="https://entri-final-project-seller-page.vercel.app/" className="hover:underline">Want to become a seller?</a>
+            <a href="http://localhost:5175" className="hover:underline">Want to become a seller?</a>
           </div>
           {user?.roles?.includes('admin') && (
             <div className="text-green-600">
-              <a href="https://entr-final-project-admin-pannel.vercel.app/" className="hover:underline">Admin Panel</a>
+              <a href="http://localhost:5174" className="hover:underline">Admin Panel</a>
             </div>
           )}
         </div>
 
-        {/* Footer Copyright */}
+      
         <div className="mt-8 text-center text-gray-500 dark:text-gray-400">
           &copy; Copyright Rimel 2022. All rights reserved.
         </div>

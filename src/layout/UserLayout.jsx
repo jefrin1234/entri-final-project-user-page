@@ -39,7 +39,7 @@ function UserLayout() {
 
    } catch (error) {
     setLoading(false)
-    console.log(error)
+    
    }
   }
 
@@ -54,7 +54,7 @@ if(loading){
     <>
      <div>
       <Header/>
-      <main className="flex-grow min-h-[calc(100vh-150px)] pt-16">
+      <main className="flex-grow min-h-[calc(100vh-150px)] pt-16 ">
         <Outlet />
       </main>
 

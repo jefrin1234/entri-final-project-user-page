@@ -254,19 +254,7 @@ const Checkout = () => {
           <h2 className="text-xl font-bold mb-4">Payment Method</h2>
 
           
-          <div className="mb-4">
-            <input
-              type="radio"
-              name="paymentMethod"
-              value="COD"
-              disabled={finalPrice < 1000}
-              checked={paymentMethod === 'COD'}
-              onChange={() => setPaymentMethod('COD')}
-            />
-            <span className="ml-2">
-              Cash on Delivery (COD) {finalPrice < 1000 && <span className="text-red-500">(Not available for orders under $1000)</span>}
-            </span>
-          </div>
+ 
 
           <div className="mb-4">
             <input
@@ -294,3 +282,4 @@ const Checkout = () => {
 };
 
 export default Checkout;
+

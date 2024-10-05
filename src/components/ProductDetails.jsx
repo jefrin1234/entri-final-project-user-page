@@ -91,7 +91,7 @@ function ProductDetails() {
         dispatch(fetchCartDetails());
       }
     } catch (error) {
-      console.log(error);
+   
       toast.error("error adding to cart");
     }
   };
@@ -162,7 +162,7 @@ function ProductDetails() {
       toast.success("Product Added to favourites")
       dispatch(fetchfavouriteDetails())
     } catch (error) {
-      console.log(error)
+    
       toast.error("Product already in favourites")
     }
 

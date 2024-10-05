@@ -22,10 +22,10 @@ function PaymentSuccessPage() {
         },
       });
       setLoading(false);
-      console.log(response);
-       dispatch(fetchCartDetails())
+    
+     
     } catch (error) {
-      console.log(error)
+     
       setLoading(false);
       setErrorMessage('Payment was successful, but we could not retrieve your order details. Please check back later or contact support.');
     }
@@ -33,7 +33,7 @@ function PaymentSuccessPage() {
 
   useEffect(() => {
     if (sessionId) {
-      console.log(sessionId)
+     
       checkPaymentStatus();
     }
   }, [sessionId]);

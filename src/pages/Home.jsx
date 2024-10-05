@@ -2,6 +2,9 @@ import React from 'react'
 import ImageSlider from '../components/ImageSlider'
 import CategoryList from '../components/Categories'
 import { Zap } from 'lucide-react'
+import TopProducts from '../components/TopProducts'
+import LatestCollections from '../components/LatestCollections'
+import TrendingSection from '../components/TrendingSections'
 
 function Home() {
   return (
@@ -27,6 +30,21 @@ function Home() {
 
 
       <CategoryList />
+  
+     <div className=" dark:bg-black py-12 px-12">
+        <div className="container mx-auto px-4">
+          <TopProducts />
+        </div>
+      </div>
+      <div className=" dark:bg-black py-12 px-12">
+        <div className="container mx-auto px-4">
+          <LatestCollections />
+        </div>
+        <div className=' dark:bg-black py-12 px-12'>
+           <TrendingSection/>
+        </div>
+      </div>
+     
     </div>
   )
 }

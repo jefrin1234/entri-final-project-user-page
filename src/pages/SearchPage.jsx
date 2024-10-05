@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axiosInstance from '../config/axiosInstance';
@@ -14,7 +13,7 @@ function SearchPage() {
     setLoading(true);
     try {
       const response = await axiosInstance.get(`/products/search${query}`);
-      console.log(response)
+      console.log(response);
       setProducts(response.data.data);
     } catch (error) {
       console.error(error);
@@ -30,17 +29,17 @@ function SearchPage() {
   }, [location.search]);
 
   return (
-    <div className="p-12">
+    <div className="p-6 md:p-12">
       {loading ? (
-       <Spinner/>
+        <Spinner />
       ) : products?.length ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 md:gap-12">
           {products.map((product) => (
-           <ProductCard product={product}/>
+            <ProductCard key={product._id} product={product} />
           ))}
         </div>
       ) : (
-        <p>No products found.</p>
+        <p className="text-center text-gray-500">No products found.</p>
       )}
     </div>
   );

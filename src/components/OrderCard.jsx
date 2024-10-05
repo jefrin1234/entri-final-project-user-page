@@ -62,9 +62,10 @@ function OrderCard({ order }) {
           Total: ${order.totalPrice}
         </div>
         <div className={`px-3 py-1 rounded-full text-sm font-medium ${order.orderStatus === 'delivered' ? 'bg-green-200 text-green-800' : order.orderStatus === 'partially shipped' ? 'bg-yellow-200 text-yellow-800' : 'bg-red-200 text-red-800'}`}>
-          Overall Status: {order.orderStatus}
+          Final Status: {order.orderStatus}
         </div>
       </div>
+      
     </div>
   );
 }
