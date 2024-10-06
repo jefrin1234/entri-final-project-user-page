@@ -84,11 +84,15 @@ function Footer() {
 
         <div className="flex flex-col sm:flex-row justify-between items-center mt-8 space-y-4 sm:space-y-0">
           <div className="text-green-600">
-            <a href="https://entri-final-project-seller-page.vercel.app/" className="hover:underline">Want to become a seller?</a>
+            <a href="https://entri-final-project-seller-page.vercel.app/" 
+            target="_blank" rel="noopener noreferrer"
+            className="hover:underline">Want to become a seller?</a>
           </div>
           {user?.roles?.includes('admin') && (
             <div className="text-green-600">
-              <a href="https://entr-final-project-admin-pannel.vercel.app/" className="hover:underline">Admin Panel</a>
+              <a href="https://entr-final-project-admin-pannel.vercel.app/" 
+              target="_blank" rel="noopener noreferrer"
+              className="hover:underline">Admin Panel</a>
             </div>
           )}
         </div>
