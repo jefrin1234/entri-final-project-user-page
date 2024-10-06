@@ -180,7 +180,7 @@ function Header() {
         Login
       </Link>
     )}
-     {!loggedIn ? (
+     {loggedIn ? (
      ''
     ) : (
       <Link to={'signup'} className="hover:text-green-500 transition duration-300 border-b-2 border-transparent hover:border-green-500">
