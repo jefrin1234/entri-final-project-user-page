@@ -41,7 +41,7 @@ function RecommendedProducts({ brand, name }) {
       ) : (
         <div
           onClick={scrollTop}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8 lg:gap-12"
+          className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8 lg:gap-12"
         >
           {products.map((product) => (
             <ProductCard key={product._id} product={product} />

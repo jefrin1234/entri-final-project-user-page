@@ -40,7 +40,7 @@ function TopProducts() {
   return (
     <div className="container mx-auto px-4 md:px-12">
       <h3 className="text-2xl font-bold mb-8 text-center">Top Selling Products</h3>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6 md:gap-8 lg:gap-12">
+      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6 md:gap-8 lg:gap-12">
         {products.length ? (
           products.map((product) => <ProductCard key={product.productId} product={product} />)
         ) : (
