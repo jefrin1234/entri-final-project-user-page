@@ -39,7 +39,7 @@ function Cart() {
         dispatch(fetchCartDetails());
       }
     } catch (error) {
- 
+      console.log(error)
     }
   };
 
